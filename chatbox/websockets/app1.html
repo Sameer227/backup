@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewpoint" content="width-device-width,initial-scale=1.0">
+   <title>Socket Things two</title>
+</head>
+<body>
+
+   Client1
+   <button onclick="sendMassage()">Send Msg</button>
+</body>
+<script>
+   const socket = new WebSocket('ws://localhost:3000');
+   socket.addEventListener('open',function(event){
+       console.log('connected to ws server');
+   })
+   socket.addEventListener('message', function(event){
+       console.log('message from server',event.data);
+   })
+
+   const sendMassage= () =>{
+       socket.send('hello from client2')
+   }
+</script>
+
+</html>
